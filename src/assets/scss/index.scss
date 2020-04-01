@@ -1,0 +1,47 @@
+@import "../../component/landing/Landing.scss";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* This prevents padding and borders being added to the elements specified height/width */
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* label focus color */
+.custom-input-field input:focus + label {
+  color: #000 !important;
+  font-weight: bold !important;
+}
+/* label underline focus color */
+.custom-input-field input:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+/* label focus color */
+.custom-input-field textarea:focus + label {
+  color: #000 !important;
+  font-weight: bold !important;
+}
+/* label underline focus color */
+.custom-input-field textarea:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.btn-custom {
+  background-color: #000 !important;
+}
+
+.helper-text-error {
+  color: #f44336 !important;
+}
