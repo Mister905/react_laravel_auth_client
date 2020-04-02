@@ -6,8 +6,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import brand_logo from "../../../assets/img/brand_logo.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { register_user } from "../../../actions/auth";
+import { register } from "../../../actions/auth";
 
 class Register extends Component {
   render() {
@@ -16,13 +15,14 @@ class Register extends Component {
       <div>
         <nav className="white">
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo">
+            <Link to={"/"} className="brand-logo">
               <img
                 src={brand_logo}
                 alt="Brand Logo"
                 className="responsive-img landing-brand-img"
               />
-            </a>
+            </Link>
+
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link to={"/login"} className="red-text landing-nav-link">
@@ -192,9 +192,9 @@ const Formik = withFormik({
     if (password !== confirm_password) {
       setFieldError("confirm_password", "Passwords do not match");
     } else {
-      props.props.register_user(values, props.props.history);
+      props.props.register(values, props.props.history);
     }
   }
 })(Register);
 
-export default compose(connect(null, { register_user }), withRouter)(Formik);
+export default compose(connect(null, { register }), withRouter)(Formik);
