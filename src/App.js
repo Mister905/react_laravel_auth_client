@@ -9,6 +9,7 @@ import Login from "./component/auth/login/Login";
 import Home from "./component/home/Home";
 import Alert from "./component/layout/alert/Alert";
 import PrivateRoute from "./component/private_route/PrivateRoute";
+import LoadingScreen from "./component/loading_screen/LoadingScreen";
 
 class App extends Component {
   componentDidMount = () => {
@@ -22,14 +23,16 @@ class App extends Component {
   };
 
   render() {
+    const { loading_user, is_authenticated } = this.props.auth;
     return (
       <BrowserRouter>
         <Alert />
         <Switch>
-          <Route exact path="/" component={Landing} />
+          {loading_user && <LoadingScreen />}
+          <Route exact path="/" component={is_authenticated ? Home : Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/home" component={Home} />
+          {/* <PrivateRoute exact path="/home" component={Home} /> */}
         </Switch>
       </BrowserRouter>
     );

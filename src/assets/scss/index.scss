@@ -1,4 +1,5 @@
 @import "../../component/landing/Landing.scss";
+@import "../../component/loading_screen/LoadingScreen.scss";
 
 *,
 *::after,
@@ -7,13 +8,21 @@
   padding: 0;
   /* This prevents padding and borders being added to the elements specified height/width */
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+}
+
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 /* label focus color */
@@ -44,4 +53,12 @@
 
 .helper-text-error {
   color: #f44336 !important;
+}
+
+.mt-25 {
+  margin-top: 2.5rem;
+}
+
+.mt-50 {
+  margin-top: 5rem;
 }
