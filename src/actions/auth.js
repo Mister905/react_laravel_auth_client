@@ -4,19 +4,17 @@ import API from "../api";
 
 export const load_user = () => async dispatch => {
   try {
-    if (localStorage.token) {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`
-        }
-      };
-      const res = await API.get("http://auth.test/user", config);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    };
+    const res = await API.get("http://auth.test/user", config);
 
-      dispatch({
-        type: USER_LOADED,
-        payload: res.data
-      });
-    }
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data
+    });
   } catch (error) {
     dispatch({
       type: AUTH_ERROR
@@ -59,15 +57,14 @@ export const login = (form_data, history) => async dispatch => {
       type: LOGIN_USER,
       payload: res.data
     });
-    history.push("/home");
+    history.push("/");
     dispatch(create_alert("success", "Welcome Back"));
   } catch (error) {
     dispatch(create_alert("error", "Login Error"));
   }
 };
 
-// export const logout_user = history => async dispatch => {
-//   dispatch({ type: LOGOUT_USER });
-//   dispatch(reset_sidenav());
-//   history.push("/");
-// };
+export const logout = history => async dispatch => {
+  dispatch({ type: LOGOUT_USER });
+  history.push("/");
+};

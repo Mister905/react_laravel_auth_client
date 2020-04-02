@@ -25,12 +25,12 @@ class Register extends Component {
 
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <Link to={"/login"} className="red-text landing-nav-link">
+                <Link to={"/login"} className="red-text bold-text landing-nav-link">
                   Login
                 </Link>
               </li>
               <li>
-                <Link to={"/register"} className="red-text landing-nav-link">
+                <Link to={"/register"} className="red-text bold-text landing-nav-link">
                   Register
                 </Link>
               </li>

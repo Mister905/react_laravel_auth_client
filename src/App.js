@@ -28,7 +28,7 @@ class App extends Component {
       <BrowserRouter>
         <Alert />
         <Switch>
-          {loading_user && <LoadingScreen />}
+          {/* {loading_user && <LoadingScreen />} */}
           <Route exact path="/" component={is_authenticated ? Home : Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />

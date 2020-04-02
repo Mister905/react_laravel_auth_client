@@ -1,5 +1,7 @@
 @import "../../component/landing/Landing.scss";
 @import "../../component/loading_screen/LoadingScreen.scss";
+@import "../../component/layout/nav_spinner/NavSpinner.scss";
+@import "../../component/layout/navigation/Navigation.scss";
 
 *,
 *::after,
@@ -61,4 +63,16 @@ body {
 
 .mt-50 {
   margin-top: 5rem;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.laravel-red {
+  color: #f44336 !important;
+}
+
+.bold-text {
+  font-weight: bold;
 }
