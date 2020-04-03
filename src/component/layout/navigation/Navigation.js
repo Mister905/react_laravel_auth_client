@@ -24,7 +24,7 @@ class Navigation extends Component {
             />
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down flex">
-            {loading_user ? (
+            {!user ? (
               <li className="nav-spinner">
                 <NavSpinner />
               </li>

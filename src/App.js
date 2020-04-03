@@ -6,6 +6,8 @@ import { load_user } from "./actions/auth";
 import Landing from "./component/landing/Landing";
 import Register from "./component/auth/register/Register";
 import Login from "./component/auth/login/Login";
+import ForgotPassword from "./component/auth/forgot_password/ForgotPassword";
+import ResetPassword from "./component/auth/reset_password/ResetPassword";
 import Home from "./component/home/Home";
 import Alert from "./component/layout/alert/Alert";
 import PrivateRoute from "./component/private_route/PrivateRoute";
@@ -28,11 +30,12 @@ class App extends Component {
       <BrowserRouter>
         <Alert />
         <Switch>
-          {/* {loading_user && <LoadingScreen />} */}
+          {loading_user && <LoadingScreen />}
           <Route exact path="/" component={is_authenticated ? Home : Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          {/* <PrivateRoute exact path="/home" component={Home} /> */}
+          <Route exact path="/forgot-password" component={ForgotPassword} />
+          <Route exact path="/reset-password/:token" component={ResetPassword} />
         </Switch>
       </BrowserRouter>
     );

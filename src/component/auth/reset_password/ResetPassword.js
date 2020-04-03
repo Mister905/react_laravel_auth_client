@@ -6,9 +6,9 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import brand_logo from "../../../assets/img/brand_logo.png";
 import { Link } from "react-router-dom";
-import { login } from "../../../actions/auth";
+import { reset_password } from "../../../actions/auth";
 
-class Login extends Component {
+class ResetPassword extends Component {
   render() {
     const { values, errors, touched } = this.props;
     return (
@@ -24,12 +24,18 @@ class Login extends Component {
             </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <Link to={"/login"} className="red-text bold-text landing-nav-link">
+                <Link
+                  to={"/login"}
+                  className="red-text bold-text landing-nav-link"
+                >
                   Login
                 </Link>
               </li>
               <li>
-                <Link to={"/register"} className="red-text bold-text landing-nav-link">
+                <Link
+                  to={"/register"}
+                  className="red-text bold-text landing-nav-link"
+                >
                   Register
                 </Link>
               </li>
@@ -41,31 +47,12 @@ class Login extends Component {
             <div className="card col m8 offset-m2">
               <div className="row">
                 <div className="col m12 center-align">
-                  <h1>Login</h1>
+                  <h1>Reset Password</h1>
                 </div>
               </div>
-
               <div className="row">
                 <div className="col m6 offset-m3">
                   <Form>
-                    <div className="row">
-                      <div className="input-field custom-input-field col m12">
-                        <Field
-                          type="text"
-                          id="email"
-                          name="email"
-                          className={errors.email ? "invalid" : ""}
-                        />
-                        <label htmlFor="email" className="active">
-                          Email
-                        </label>
-                        {errors.email && (
-                          <span className="helper-text helper-text-error">
-                            {errors.email}
-                          </span>
-                        )}
-                      </div>
-                    </div>
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
                         <Field
@@ -75,7 +62,7 @@ class Login extends Component {
                           className={errors.password ? "invalid" : ""}
                         />
                         <label htmlFor="password" className="active">
-                          Password
+                          New Password
                         </label>
                         {errors.password && (
                           <span className="helper-text helper-text-error">
@@ -86,7 +73,27 @@ class Login extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
-                        <button className="btn btn-custom right" type="submit">Submit</button>
+                        <Field
+                          type="password"
+                          id="confirm_password"
+                          name="confirm_password"
+                          className={errors.confirm_password ? "invalid" : ""}
+                        />
+                        <label htmlFor="confirm_password" className="active">
+                          Confirm Password
+                        </label>
+                        {errors.confirm_password && (
+                          <span className="helper-text helper-text-error">
+                            {errors.confirm_password}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="input-field custom-input-field col m12">
+                        <button className="btn btn-custom right" type="submit">
+                          Submit
+                        </button>
                       </div>
                     </div>
                   </Form>
@@ -101,24 +108,32 @@ class Login extends Component {
 }
 
 const Formik = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ password, confirm_password }) {
     return {
-      email: email || "",
-      password: password || ""
+      password: password || "",
+      confirm_password: confirm_password || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid email")
-      .required("Email is required"),
-    password: Yup.string().required("Password is required")
+    password: Yup.string().required("Password is required"),
+    confirm_password: Yup.string().required("Confirm Password is required")
   }),
   validateOnBlur: false,
   validateOnChange: false,
   handleSubmit: (values, props) => {
-    props.props.login(values, props.props.history);
+    const { setFieldError } = props;
+    const { password, confirm_password } = values;
+    if (password !== confirm_password) {
+      setFieldError("confirm_password", "Passwords do not match");
+    } else {
+      const { token } = props.props.match.params;
+      props.props.reset_password(
+        { token, password, confirm_password },
+        props.props.history
+      );
+    }
   }
-})(Login);
+})(ResetPassword);
 
-export default compose(connect(null, { login }), withRouter)(Formik);
+export default compose(connect(null, { reset_password }), withRouter)(Formik);

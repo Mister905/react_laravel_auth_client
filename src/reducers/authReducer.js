@@ -9,7 +9,7 @@ const initial_state = {
   token: localStorage.getItem("token"),
   is_authenticated: false,
   loading_user: true,
-  user: {}
+  user: null
 };
 
 export default function(state = initial_state, action) {
@@ -20,8 +20,7 @@ export default function(state = initial_state, action) {
       return {
         ...state,
         token: payload,
-        is_authenticated: true,
-        loading_user: false
+        is_authenticated: true
       };
     case USER_LOADED:
       return {
@@ -33,6 +32,7 @@ export default function(state = initial_state, action) {
     case AUTH_ERROR:
       return {
         ...state,
+        token: null,
         is_authenticated: false,
         loading_user: false
       };
@@ -43,7 +43,7 @@ export default function(state = initial_state, action) {
         token: null,
         is_authenticated: false,
         loading_user: false,
-        user: {}
+        user: null
       };
     default:
       return state;

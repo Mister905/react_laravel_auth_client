@@ -4,13 +4,7 @@ import API from "../api";
 
 export const load_user = () => async dispatch => {
   try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    };
-    const res = await API.get("http://auth.test/user", config);
-
+    const res = await API.get("/user");
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -67,4 +61,40 @@ export const login = (form_data, history) => async dispatch => {
 export const logout = history => async dispatch => {
   dispatch({ type: LOGOUT_USER });
   history.push("/");
+};
+
+export const forgot_password = (form_data, history) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  let request_body = JSON.stringify(form_data);
+
+  try {
+    const res = await API.post("/forgot", request_body, config);
+    history.push("/");
+    dispatch(create_alert("success", "Check inbox for reset email"));
+  } catch (error) {
+    dispatch(create_alert("error", "Password update failed"));
+  }
+};
+
+export const reset_password = (form_data, history) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  let request_body = JSON.stringify(form_data);
+
+  try {
+    const res = await API.post("/reset", request_body, config);
+    history.push("/login");
+    dispatch(create_alert("success", "Password Reset"));
+  } catch (error) {
+    dispatch(create_alert("error", "Password Reset Failed"));
+  }
 };

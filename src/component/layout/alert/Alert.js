@@ -13,9 +13,9 @@ class Alert extends Component {
           const { id, type, message } = alert;
           let alert_html;
           if (type == "error") {
-            alert_html = `<span><i class="material-icons error-icon">error</i></span><span class="error-message">${message}</span`;
+            alert_html = `<span class="alert-error">${message}</span`;
           } else {
-            alert_html = `<span>${message}</span`;
+            alert_html = `<span class="alert-success">${message}</span`;
           }
           const options = {
             html: alert_html,

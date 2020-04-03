@@ -7,13 +7,12 @@ class Home extends Component {
     return (
       <>
         <Navigation />
-        <div className="container">
+        <div className="container mt-25">
           <div className="row">
             <div className="card col m12">
               <div className="row">
                 <div className="col m12 center-align">
-                  <h1>Home</h1>
-                  <h2>You are logged in!</h2>
+                  <h1>Laravel React Authentication</h1>
                 </div>
               </div>
               <div className="row">

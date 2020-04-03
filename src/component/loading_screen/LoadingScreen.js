@@ -1,8 +1,14 @@
 import React from "react";
+import loading_image from "../../assets/img/loading_image.png";
 
 const LoadingScreen = () => {
   return (
     <div className="container mt-50">
+      <div className="row">
+        <div className="col m12 center-align">
+          <img src={loading_image} alt=""/>
+        </div>
+      </div>
       <div className="row">
         <div className="col m12 s12 center-align">
           <div className="preloader-wrapper big active">
