@@ -18,11 +18,11 @@ class App extends Component {
     this.props.load_user();
   };
 
-  componentDidUpdate = prevProps => {
-    if (this.props.auth.is_authenticated !== prevProps.auth.is_authenticated) {
-      if (this.props.auth.is_authenticated) this.props.load_user();
-    }
-  };
+  // componentDidUpdate = prevProps => {
+  //   if (this.props.auth.is_authenticated !== prevProps.auth.is_authenticated) {
+  //     if (this.props.auth.is_authenticated) this.props.load_user();
+  //   }
+  // };
 
   render() {
     const { loading_user, is_authenticated } = this.props.auth;

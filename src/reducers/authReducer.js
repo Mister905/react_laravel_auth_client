@@ -16,11 +16,13 @@ export default function(state = initial_state, action) {
   const { type, payload } = action;
   switch (type) {
     case LOGIN_USER:
-      localStorage.setItem("token", payload);
+      const { token, first_name, last_name } = payload;
+      localStorage.setItem("token", token);
       return {
         ...state,
-        token: payload,
-        is_authenticated: true
+        token,
+        is_authenticated: true,
+        user: { first_name, last_name }
       };
     case USER_LOADED:
       return {
