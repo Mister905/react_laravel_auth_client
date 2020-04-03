@@ -98,8 +98,8 @@ class Login extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
-                        <button className="btn btn-custom right" type="submit">
-                          Submit
+                        <button className="btn btn-custom bold-text right" type="submit">
+                          Login
                         </button>
                       </div>
                     </div>

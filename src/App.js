@@ -39,6 +39,7 @@ class App extends Component {
             component={ResetPassword}
           />
           <PrivateRoute exact path="/products" component={ProductList} />
+          <PrivateRoute exact path="/products/create" component={CreateProduct} />
         </Switch>
       </BrowserRouter>
     );

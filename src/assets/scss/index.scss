@@ -2,6 +2,8 @@
 @import "../../component/loading_screen/LoadingScreen.scss";
 @import "../../component/layout/navigation/Navigation.scss";
 @import "../../component/layout/alert/Alert.scss";
+@import "../../component/home/Home.scss";
+@import "../../component/products/list/List.scss";
 
 *,
 *::after,
@@ -50,7 +52,8 @@ body {
 }
 
 .btn-custom {
-  background-color: #000 !important;
+  background-color: #fff !important;
+  color: #f44336 !important;
 }
 
 .helper-text-error {
@@ -97,4 +100,16 @@ body {
 .icon img {
   top: 0.125em;
   position: relative;
+}
+
+.mr-5 {
+  margin-right: 0.5rem;
+}
+
+.red-fill {
+  fill: #f44336 !important;
+}
+
+.custom-spinner-color {
+  border-color: #f44336 !important;
 }

@@ -153,8 +153,8 @@ class Register extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
-                        <button className="btn btn-custom right" type="submit">
-                          Submit
+                        <button className="btn btn-custom bold-text right" type="submit">
+                          Register
                         </button>
                       </div>
                     </div>
@@ -175,25 +175,23 @@ const Formik = withFormik({
     last_name,
     email,
     password,
-    confirm_password
+    confirm_password,
   }) {
     return {
       first_name: first_name || "",
       last_name: last_name || "",
       email: email || "",
       password: password || "",
-      confirm_password: confirm_password || ""
+      confirm_password: confirm_password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
     first_name: Yup.string().required("First Name is required"),
     last_name: Yup.string().required("Last Name is required"),
-    email: Yup.string()
-      .email("Invalid email")
-      .required("Email is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string().required("Password is required"),
-    confirm_password: Yup.string().required("Confirm Password is required")
+    confirm_password: Yup.string().required("Confirm Password is required"),
   }),
   validateOnBlur: false,
   validateOnChange: false,
@@ -206,11 +204,11 @@ const Formik = withFormik({
     } else {
       props.props.register(values, props.props.history);
     }
-  }
+  },
 })(Register);
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default compose(

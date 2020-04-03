@@ -19,7 +19,8 @@
         "id": 154,
         "order": 15,
         "prevSize": 20,
-        "name": "edit"
+        "name": "edit",
+        "code": 59648
       },
       "setIdx": 0,
       "setId": 2,
@@ -43,7 +44,8 @@
         "id": 193,
         "order": 13,
         "prevSize": 20,
-        "name": "info"
+        "name": "info",
+        "code": 59649
       },
       "setIdx": 0,
       "setId": 2,
@@ -71,7 +73,8 @@
         "name": "user",
         "order": 17,
         "id": 114,
-        "prevSize": 32
+        "prevSize": 20,
+        "code": 59761
       },
       "setIdx": 1,
       "setId": 1,
@@ -101,7 +104,8 @@
         "name": "bin",
         "order": 19,
         "id": 173,
-        "prevSize": 32
+        "prevSize": 20,
+        "code": 59820
       },
       "setIdx": 1,
       "setId": 1,
@@ -127,7 +131,8 @@
         "name": "plus",
         "order": 18,
         "id": 267,
-        "prevSize": 32
+        "prevSize": 20,
+        "code": 59914
       },
       "setIdx": 1,
       "setId": 1,
@@ -155,7 +160,8 @@
         "name": "cancel-circle",
         "order": 20,
         "id": 270,
-        "prevSize": 32
+        "prevSize": 20,
+        "code": 59917
       },
       "setIdx": 1,
       "setId": 1,
@@ -183,7 +189,8 @@
         "name": "checkmark",
         "order": 21,
         "id": 273,
-        "prevSize": 32
+        "prevSize": 20,
+        "code": 59920
       },
       "setIdx": 1,
       "setId": 1,

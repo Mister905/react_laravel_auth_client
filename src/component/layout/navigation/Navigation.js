@@ -25,17 +25,15 @@ class Navigation extends Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down flex">
             <li>
               <div className="nav-user-wrapper">
-                <svg
-                  className="vertical-align-middle"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 32 32"
-                >
-                  <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
-                </svg>
-                <span className="nav-user bold-text laravel-red vertical-align-middle">
-                  {user.first_name}
-                </span>
+                <div className="icon baseline mr-5">
+                  <svg viewBox="0 0 20 20" className="red-fill">
+                    <path
+                      id="icon-user"
+                      d="M11.25 13.801v-1.031c1.377-0.776 2.5-2.71 2.5-4.645 0-3.107 0-5.625-3.75-5.625s-3.75 2.518-3.75 5.625c0 1.935 1.123 3.869 2.5 4.645v1.031c-4.24 0.347-7.5 2.43-7.5 4.949h17.5c0-2.519-3.26-4.602-7.5-4.949z"
+                    ></path>
+                  </svg>
+                </div>
+                <span className="bold-text laravel-red">{user.first_name}</span>
               </div>
             </li>
             <li>
@@ -53,8 +51,8 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default compose(
