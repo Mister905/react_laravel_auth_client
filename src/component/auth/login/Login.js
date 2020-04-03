@@ -9,6 +9,12 @@ import { Link } from "react-router-dom";
 import { login } from "../../../actions/auth";
 
 class Login extends Component {
+  componentDidMount = () => {
+    const { is_authenticated } = this.props.auth;
+    if (is_authenticated) {
+      this.props.history.push("/");
+    }
+  };
   render() {
     const { values, errors, touched } = this.props;
     return (
@@ -24,12 +30,18 @@ class Login extends Component {
             </Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <Link to={"/login"} className="red-text bold-text landing-nav-link">
+                <Link
+                  to={"/login"}
+                  className="red-text bold-text landing-nav-link"
+                >
                   Login
                 </Link>
               </li>
               <li>
-                <Link to={"/register"} className="red-text bold-text landing-nav-link">
+                <Link
+                  to={"/register"}
+                  className="red-text bold-text landing-nav-link"
+                >
                   Register
                 </Link>
               </li>
@@ -86,7 +98,9 @@ class Login extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
-                        <button className="btn btn-custom right" type="submit">Submit</button>
+                        <button className="btn btn-custom right" type="submit">
+                          Submit
+                        </button>
                       </div>
                     </div>
                   </Form>
@@ -121,4 +135,8 @@ const Formik = withFormik({
   }
 })(Login);
 
-export default compose(connect(null, { login }), withRouter)(Formik);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default compose(connect(mapStateToProps, { login }), withRouter)(Formik);

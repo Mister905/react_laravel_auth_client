@@ -9,6 +9,12 @@ import { Link } from "react-router-dom";
 import { register } from "../../../actions/auth";
 
 class Register extends Component {
+  componentDidMount = () => {
+    const { is_authenticated } = this.props.auth;
+    if (is_authenticated) {
+      this.props.history.push("/");
+    }
+  };
   render() {
     const { values, errors, touched } = this.props;
     return (
@@ -203,4 +209,11 @@ const Formik = withFormik({
   }
 })(Register);
 
-export default compose(connect(null, { register }), withRouter)(Formik);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default compose(
+  connect(mapStateToProps, { register }),
+  withRouter
+)(Formik);

@@ -76,3 +76,25 @@ body {
 .bold-text {
   font-weight: bold;
 }
+
+.btn-wide {
+  width: 100%;
+}
+
+.icon {
+  display: inline-flex;
+  align-self: center;
+}
+
+.icon svg,
+.icon img {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+
+.icon.baseline svg,
+.icon img {
+  top: 0.125em;
+  position: relative;
+}
