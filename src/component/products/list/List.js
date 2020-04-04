@@ -7,7 +7,25 @@ import { get_products } from "../../../actions/product";
 
 class List extends Component {
   componentDidMount = () => {
-    console.log(this.props);
+    this.props.get_products();
+  };
+  render_list = () => {
+    const { products, loading_products } = this.props.product;
+    if (loading_products) {
+      return <Preloader />;
+    } else {
+      if (products.length === 0) {
+        return <p className="no-products-message">There are no products</p>;
+      } else {
+        return (
+          <ul>
+            {products.map((product) => {
+              return <li>{product}</li>;
+            })}
+          </ul>
+        );
+      }
+    }
   };
   render() {
     return (
@@ -35,9 +53,7 @@ class List extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="col m12 center-align">
-                <Preloader />
-              </div>
+              <div className="col m12 center-align">{this.render_list()}</div>
             </div>
           </div>
         </div>

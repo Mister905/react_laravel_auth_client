@@ -4,6 +4,7 @@
 @import "../../component/layout/alert/Alert.scss";
 @import "../../component/home/Home.scss";
 @import "../../component/products/list/List.scss";
+@import "../../component/products/create/Create.scss";
 
 *,
 *::after,
@@ -34,7 +35,7 @@ body {
   color: #000 !important;
   font-weight: bold !important;
 }
-/* label underline focus color */
+/* Input underline focus color */
 .custom-input-field input:focus {
   border-bottom: 1px solid #000 !important;
   box-shadow: 0 1px 0 0 #000 !important;
@@ -45,7 +46,7 @@ body {
   color: #000 !important;
   font-weight: bold !important;
 }
-/* label underline focus color */
+/* Textarea underline focus color */
 .custom-input-field textarea:focus {
   border-bottom: 1px solid #000 !important;
   box-shadow: 0 1px 0 0 #000 !important;

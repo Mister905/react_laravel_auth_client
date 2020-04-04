@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 class Create extends Component {
   render() {
-    const { values, errors, touched } = this.props;
+    const { values, errors, touched, setFieldValue } = this.props;
     return (
       <div>
         <div className="container mt-25">
@@ -30,9 +30,16 @@ class Create extends Component {
                           type="text"
                           id="brand"
                           name="brand"
-                          className={errors.brand ? "invalid" : ""}
+                          className={
+                            errors.brand
+                              ? "invalid custom-input"
+                              : "custom-input"
+                          }
                         />
-                        <label htmlFor="brand" className="active">
+                        <label
+                          htmlFor="brand"
+                          className="active custom-input-label"
+                        >
                           Brand
                         </label>
                         {errors.brand && (
@@ -48,9 +55,16 @@ class Create extends Component {
                           type="text"
                           id="name"
                           name="name"
-                          className={errors.name ? "invalid" : ""}
+                          className={
+                            errors.name
+                              ? "invalid custom-input"
+                              : "custom-input"
+                          }
                         />
-                        <label htmlFor="name" className="active">
+                        <label
+                          htmlFor="name"
+                          className="active custom-input-label"
+                        >
                           Name
                         </label>
                         {errors.name && (
@@ -60,6 +74,66 @@ class Create extends Component {
                         )}
                       </div>
                     </div>
+                    <div className="row">
+                      <div className="input-field custom-input-field col m12">
+                        <Field
+                          component="textarea"
+                          id="description"
+                          name="description"
+                          className={
+                            errors.description
+                              ? "invalid materialize-textarea"
+                              : "materialize-textarea"
+                          }
+                        />
+                        <label htmlFor="description" className="active">
+                          Description
+                        </label>
+                        {errors.description && (
+                          <span className="helper-text helper-text-error">
+                            {errors.description}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="file-field input-field">
+                      <div className="btn btn-custom btn-product-image">
+                        <span>
+                          <div className="icon baseline">
+                            <svg viewBox="0 0 20 20">
+                              <path
+                                id=""
+                                d="M18 3h-16c-0.553 0-1 0.447-1 1v12c0 0.552 0.447 1 1 1h16c0.553 0 1-0.448 1-1v-12c0-0.552-0.447-1-1-1zM13.25 6.5c0.69 0 1.25 0.56 1.25 1.25s-0.56 1.25-1.25 1.25-1.25-0.56-1.25-1.25 0.56-1.25 1.25-1.25zM4 14l3.314-7.619 3.769 6.102 3.231-1.605 1.686 3.122h-12z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </span>
+                        {/* <input type="file" /> */}
+                        <Field
+                          id="image"
+                          name="image"
+                          type="file"
+                          onChange={(e) => {
+                            var file = e.target.files[0];
+                            // var reader = new FileReader();
+                            setFieldValue("attachment_filename", file.name);
+                            // reader.onload = function (item) {
+                            //   setFieldValue(
+                            //     "attachment_data",
+                            //     item.target.result
+                            //   );
+                            // };
+
+                            // reader.readAsDataURL(file);
+                          }}
+                        />
+                      </div>
+                      <div className="file-path-wrapper">
+                        <input className="file-path validate" type="text" />
+                      </div>
+                    </div>
+
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
                         <button
@@ -82,10 +156,12 @@ class Create extends Component {
 }
 
 const Formik = withFormik({
-  mapPropsToValues({ brand, name }) {
+  mapPropsToValues({ brand, name, description, image }) {
     return {
       brand: brand || "",
       name: name || "",
+      description: description || "",
+      image: image || "",
     };
   },
 
@@ -96,6 +172,7 @@ const Formik = withFormik({
   validateOnBlur: false,
   validateOnChange: false,
   handleSubmit: (values, props) => {
+    console.log(values);
     // props.props.register(values, props.props.history);
   },
 })(Create);
@@ -104,7 +181,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default compose(
-  connect(mapStateToProps, {  }),
-  withRouter
-)(Formik);
+export default compose(connect(mapStateToProps, {}), withRouter)(Formik);
