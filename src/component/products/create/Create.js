@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-// import { register } from "../../../actions/auth";
+import { create_product } from "../../../actions/product";
 
 class Create extends Component {
   render() {
@@ -96,8 +96,7 @@ class Create extends Component {
                         )}
                       </div>
                     </div>
-
-                    <div className="file-field input-field">
+                    <div className="file-field input-field custom-input-field">
                       <div className="btn btn-custom btn-product-image">
                         <span>
                           <div className="icon baseline">
@@ -109,23 +108,15 @@ class Create extends Component {
                             </svg>
                           </div>
                         </span>
-                        {/* <input type="file" /> */}
-                        <Field
+                        <input
                           id="image"
                           name="image"
                           type="file"
-                          onChange={(e) => {
-                            var file = e.target.files[0];
-                            // var reader = new FileReader();
-                            setFieldValue("attachment_filename", file.name);
-                            // reader.onload = function (item) {
-                            //   setFieldValue(
-                            //     "attachment_data",
-                            //     item.target.result
-                            //   );
-                            // };
-
-                            // reader.readAsDataURL(file);
+                          onChange={(event) => {
+                            setFieldValue(
+                              "image",
+                              event.currentTarget.files[0]
+                            );
                           }}
                         />
                       </div>
@@ -161,7 +152,7 @@ const Formik = withFormik({
       brand: brand || "",
       name: name || "",
       description: description || "",
-      image: image || "",
+      image: image || null,
     };
   },
 
@@ -172,8 +163,7 @@ const Formik = withFormik({
   validateOnBlur: false,
   validateOnChange: false,
   handleSubmit: (values, props) => {
-    console.log(values);
-    // props.props.register(values, props.props.history);
+    props.props.create_product(values, props.props.history);
   },
 })(Create);
 
@@ -181,4 +171,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default compose(connect(mapStateToProps, {}), withRouter)(Formik);
+export default compose(
+  connect(mapStateToProps, { create_product }),
+  withRouter
+)(Formik);

@@ -12,15 +12,48 @@ class List extends Component {
   render_list = () => {
     const { products, loading_products } = this.props.product;
     if (loading_products) {
-      return <Preloader />;
+      return (
+        <div className="row">
+          <div className="col m12 center-align">
+            <Preloader />
+          </div>
+        </div>
+      );
     } else {
       if (products.length === 0) {
-        return <p className="no-products-message">There are no products</p>;
+        return (
+          <div className="row">
+            <div className="col m12 center-align">
+              <p className="no-products-message">There are no products</p>
+            </div>
+          </div>
+        );
       } else {
         return (
           <ul>
             {products.map((product) => {
-              return <li>{product}</li>;
+              return (
+                <div className="row">
+                  <div className="col m6 offset-m3">
+                    <div className="card">
+                      <div className="card-image">
+                        <img
+                          src={`http://auth.test/storage/product_images/${product.image}`}
+                        />
+                        <span className="card-title">
+                          {product.brand} {product.name}
+                        </span>
+                      </div>
+                      <div className="card-content">
+                        <p>{product.description}</p>
+                      </div>
+                      <div className="card-action">
+                        <a href="#">This is a link</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
             })}
           </ul>
         );
@@ -52,9 +85,7 @@ class List extends Component {
                 </Link>
               </div>
             </div>
-            <div className="row">
-              <div className="col m12 center-align">{this.render_list()}</div>
-            </div>
+            {this.render_list()}
           </div>
         </div>
       </div>

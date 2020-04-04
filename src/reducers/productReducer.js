@@ -1,4 +1,4 @@
-import { GET_PRODUCTS } from "../actions/types";
+import { GET_PRODUCTS, CREATE_PRODUCT } from "../actions/types";
 
 const initial_state = {
   products: [],
@@ -14,7 +14,11 @@ export default function (state = initial_state, action) {
         products: payload,
         loading_products: false,
       };
-
+    case CREATE_PRODUCT:
+      return {
+        ...state,
+        loading_products: true,
+      };
     default:
       return state;
   }

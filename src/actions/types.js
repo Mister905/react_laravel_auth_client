@@ -5,3 +5,4 @@ export const REMOVE_ALERT = "REMOVE_ALERT";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const GET_PRODUCTS = "GET_PRODUCTS";
+export const CREATE_PRODUCT = "CREATE_PRODUCT";

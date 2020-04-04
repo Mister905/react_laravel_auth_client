@@ -91,7 +91,7 @@ class ResetPassword extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field custom-input-field col m12">
-                        <button className="btn btn-custom right" type="submit">
+                        <button className="btn btn-custom right bold-text" type="submit">
                           Submit
                         </button>
                       </div>
